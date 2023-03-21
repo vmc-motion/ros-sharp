@@ -52,7 +52,7 @@ namespace RosSharp.RosBridgeClientTest
             Console.ReadKey(true);
             for (int i = 0; i < 100000; i++)
             {
-                image.header.seq += 1;
+                //image.header.seq += 1;
                 image.data = Enumerable.Repeat((byte)0x20, ImageDataSize).ToArray();
                 rosSocket.Publish(publication_id, image);
             }

@@ -178,7 +178,7 @@ namespace RosSharp.RosBridgeClient
         {
             byte[] buffer = ((MessageEventArgs)e).RawData;
             DeserializedObject jsonElement = Serializer.Deserialize(buffer);
-
+            
             switch (jsonElement.GetProperty("op"))            
             {
                 case "publish":

@@ -91,7 +91,8 @@ namespace RosSharp.RosBridgeClient
 
         internal override void Receive(string message, ISerializer serializer)
         {
-            SubscriptionHandler.Invoke(serializer.Deserialize<T>(message));
+            string replacedString = message.Replace("null", "0.0");
+            SubscriptionHandler.Invoke(serializer.Deserialize<T>(replacedString));
         }
     }
 

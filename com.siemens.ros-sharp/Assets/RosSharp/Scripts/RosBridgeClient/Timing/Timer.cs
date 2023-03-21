@@ -32,23 +32,23 @@ namespace RosSharp.RosBridgeClient
 
         public virtual MessageTypes.Std.Time Now()
         {
-            Now(out uint secs, out uint nsecs);
-            return new MessageTypes.Std.Time(secs, nsecs);
+            Now(out uint sec, out uint nanosec);
+            return new MessageTypes.Std.Time(sec, nanosec);
         }
 
         public virtual void Now(MessageTypes.Std.Time stamp)
         {
-            uint secs; uint nsecs;
-            Now(out secs, out nsecs);
-            stamp.secs = secs; stamp.nsecs = nsecs;
+            uint sec; uint nanosec;
+            Now(out sec, out nanosec);
+            stamp.sec = sec; stamp.nanosec = nanosec;
         }
 
-        private static void Now(out uint secs, out uint nsecs)
+        private static void Now(out uint sec, out uint nanosec)
         {
             TimeSpan timeSpan = DateTime.Now.ToUniversalTime() - UNIX_EPOCH;
             double msecs = timeSpan.TotalMilliseconds;
-            secs = (uint)(msecs / 1000);
-            nsecs = (uint)((msecs / 1000 - secs) * 1e+9);
+            sec = (uint)(msecs / 1000);
+            nanosec = (uint)((msecs / 1000 - sec) * 1e+9);
         }
     }
 }

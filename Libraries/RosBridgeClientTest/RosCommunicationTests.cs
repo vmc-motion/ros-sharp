@@ -51,7 +51,7 @@ namespace RosSharp.RosBridgeClientTest
             //string json = JsonConvert.SerializeObject(comm); // for newtonsoft
             string json = JsonSerializer.Serialize(comm);      // for system.text.json
 
-            Assert.AreEqual("{\"topic\":\"mytopic\",\"msg\":{\"secs\":0,\"nsecs\":0},\"op\":\"publish\",\"id\":\"myid\"}",
+            Assert.AreEqual("{\"topic\":\"mytopic\",\"msg\":{\"sec\":0,\"nanosec\":0},\"op\":\"publish\",\"id\":\"myid\"}",
                            json);
             //Console.WriteLine("JSON:\n" + JsonConvert.SerializeObject(comm, Formatting.Indented) + "\n"); // for newtonsoft
             Console.WriteLine("JSON:\n" + JsonSerializer.Serialize(comm, JsonOptions) + "\n");              // for system.text.json
@@ -78,7 +78,7 @@ namespace RosSharp.RosBridgeClientTest
             //string json = JsonConvert.SerializeObject(comm); // for newtonsoft
             string json = JsonSerializer.Serialize(comm);      // for system.text.json
 
-            Assert.AreEqual("{\"service\":\"myservice\",\"args\":{\"secs\":0,\"nsecs\":0}," +
+            Assert.AreEqual("{\"service\":\"myservice\",\"args\":{\"sec\":0,\"nanosec\":0}," +
                             "\"fragment_size\":2147483647,\"compression\":\"none\",\"op\":\"call_service\",\"id\":\"myid\"}",
                             json);
             //Console.WriteLine("JSON:\n" + JsonConvert.SerializeObject(comm, Formatting.Indented) + "\n"); // for newtonsoft

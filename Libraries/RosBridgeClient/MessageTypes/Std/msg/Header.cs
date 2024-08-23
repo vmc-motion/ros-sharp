@@ -18,7 +18,7 @@ namespace RosSharp.RosBridgeClient.MessageTypes.Std
         //  in a particular coordinate frame.
         //  
         //  sequence ID: consecutively increasing ID 
-        public uint seq { get; set; }
+        //public uint seq { get; set; }
         // Two-integer timestamp that is expressed as:
         //  * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
         //  * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
@@ -31,14 +31,14 @@ namespace RosSharp.RosBridgeClient.MessageTypes.Std
 
         public Header()
         {
-            this.seq = 0;
+            //this.seq = 0;
             this.stamp = new Time();
             this.frame_id = "";
         }
 
         public Header(uint seq, Time stamp, string frame_id)
         {
-            this.seq = seq;
+            //this.seq = seq;
             this.stamp = stamp;
             this.frame_id = frame_id;
         }

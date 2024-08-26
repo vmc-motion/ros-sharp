@@ -91,8 +91,11 @@ namespace RosSharp.RosBridgeClient
 
         internal override void Receive(string message, ISerializer serializer)
         {
-            string replacedString = message.Replace("null", "0.0");
-            SubscriptionHandler.Invoke(serializer.Deserialize<T>(replacedString));
+#if ROS2
+            // TODO: Find a better way. This seem ineffective and only considers floating points (like JointState values). 
+            message = message.Replace("null", "0.0");
+#endif
+            SubscriptionHandler.Invoke(serializer.Deserialize<T>(message));
         }
     }
 

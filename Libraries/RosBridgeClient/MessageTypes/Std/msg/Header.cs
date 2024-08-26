@@ -13,12 +13,14 @@ namespace RosSharp.RosBridgeClient.MessageTypes.Std
     {
         public const string RosMessageName = "std_msgs/Header";
 
+#if !ROS2
         //  Standard metadata for higher-level stamped data types.
         //  This is generally used to communicate timestamped data 
         //  in a particular coordinate frame.
         //  
         //  sequence ID: consecutively increasing ID 
-        //public uint seq { get; set; }
+        public uint seq { get; set; }
+#endif
         // Two-integer timestamp that is expressed as:
         //  * stamp.sec: seconds (stamp_secs) since epoch (in Python the variable is called 'secs')
         //  * stamp.nsec: nanoseconds since stamp_secs (in Python the variable is called 'nsecs')
@@ -31,14 +33,18 @@ namespace RosSharp.RosBridgeClient.MessageTypes.Std
 
         public Header()
         {
-            //this.seq = 0;
+#if !ROS2
+            this.seq = 0;
+#endif
             this.stamp = new Time();
             this.frame_id = "";
         }
 
         public Header(uint seq, Time stamp, string frame_id)
         {
-            //this.seq = seq;
+#if !ROS2
+            this.seq = seq;
+#endif
             this.stamp = stamp;
             this.frame_id = frame_id;
         }

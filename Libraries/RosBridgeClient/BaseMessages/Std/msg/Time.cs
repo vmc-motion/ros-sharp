@@ -18,6 +18,8 @@ namespace RosSharp.RosBridgeClient.MessageTypes.Std
     public class Time : Message
     {
         public const string RosMessageName = "std_msgs/Time";
+
+#if ROS2
         public uint sec { get; set; }
         public uint nanosec { get; set; }
 
@@ -32,6 +34,21 @@ namespace RosSharp.RosBridgeClient.MessageTypes.Std
             this.sec = sec;
             this.nanosec = nanosec;
         }
+#else
+        public uint secs { get; set; }
+        public uint nsecs { get; set; }
 
+        public Time()
+        {
+            secs = 0;
+            nsecs = 0;
+        }
+
+        public Time(uint secs, uint nsecs)
+        {
+            this.secs = secs;
+            this.nsecs = nsecs;
+        }
+#endif
     }
 }

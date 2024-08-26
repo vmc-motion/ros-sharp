@@ -19,6 +19,7 @@ namespace RosSharp.RosBridgeClient.MessageTypes.Std
 	{
         public const string RosMessageName = "std_msgs/Duration";
 
+#if ROS2
         public uint sec { get; set; }
         public uint nanosec { get; set; }
 
@@ -33,5 +34,21 @@ namespace RosSharp.RosBridgeClient.MessageTypes.Std
         	this.sec = sec;
         	this.nanosec = nanosec;
         }
-	}
+#else
+        public uint secs { get; set; }
+        public uint nsecs { get; set; }
+
+        public Duration()
+        {
+            secs = 0;
+            nsecs = 0;
+        }
+
+        public Duration(uint secs, uint nsecs)
+        {
+            this.secs = secs;
+            this.nsecs = nsecs;
+        }
+#endif
+    }
 }
